@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # Smart Traffic Violation Monitoring System 🚦
 An **"Introduction to DBMS"** College Mini Project.
 
@@ -98,3 +99,6 @@ This project has been intentionally customized to show examiners advanced DBMS m
 * **Form Inputs Validation**: HTML drop-down selectors and modern forms prevent inputting invalid values or orphaned foreign keys, protecting database consistency.
 * **SQL Injection Prevention**: Safe procedural variable escaping is written using `mysqli_real_escape_string` inside PHP handlers.
 * **Polished Micro-Interactions**: Features a gorgeous dark theme, custom responsive tables, sliding sidebar highlight animations, and self-fading notification blocks.
+=======
+# Smart_Traffic_System-DBMS-PROJECT-
+>>>>>>> 8b4e0987184ea4ff27b7dc4dd1c4a7ed31f493f6
