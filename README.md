@@ -1,10 +1,79 @@
-<<<<<<< HEAD
-# Smart Traffic Violation Monitoring System 🚦
-An **"Introduction to DBMS"** College Mini Project.
+# 🚦 Smart Traffic Violation Monitoring System
 
-This is a clean, modern, and beginner-friendly Database Management System (DBMS) web application designed using a **PHP** backend, **MySQL** database, and a highly polished **HTML, CSS, and JavaScript** frontend. 
+A modern desktop-based **Database Management System (DBMS)** project developed using **Python**, **CustomTkinter**, and **MySQL**. The system enables traffic authorities to efficiently manage vehicle owners, vehicles, and traffic violations through an interactive graphical user interface.
 
-It provides an intuitive dashboard alongside comprehensive **CRUD (Create, Read, Update, Delete)** modules for all core traffic administration entities.
+---
+
+## 📌 Project Overview
+
+The Smart Traffic Violation Monitoring System is designed to digitize and simplify traffic violation record management. It provides a centralized platform for maintaining owner information, vehicle details, and violation records while ensuring data integrity through a MySQL database.
+
+---
+
+## 🎯 SDG Goal
+
+### SDG 11 – Sustainable Cities and Communities
+
+This project contributes to:
+
+* 🚗 Safer roads and transportation
+* 🚦 Improved traffic management
+* 🏙️ Smart city initiatives
+* 📊 Efficient law enforcement operations
+
+---
+
+## 🛠️ Technology Stack
+
+| Layer                 | Technology            |
+| --------------------- | --------------------- |
+| Frontend              | Python CustomTkinter  |
+| GUI Components        | Tkinter (TTK Widgets) |
+| Backend               | Python                |
+| Database              | MySQL                 |
+| Database Connectivity | MySQL Connector       |
+| IDE                   | VS Code               |
+
+---
+
+## ✨ Features
+
+### 👤 Owner Management
+
+* Add vehicle owner details
+* Search owners instantly
+* View owner records
+
+### 🚗 Vehicle Management
+
+* Register vehicles
+* Link vehicles to owners
+* Search vehicle records
+
+### 🚨 Violation Management
+
+* Record traffic violations
+* Track fine amounts
+* Monitor payment status
+* Search violation history
+
+### 🔍 Smart Search
+
+* Real-time search functionality
+* Fast data retrieval
+
+### 💾 Database Management
+
+* Automatic database initialization
+* Secure MySQL connectivity
+* Structured relational database
+
+### 🎨 Modern User Interface
+
+* Dark-themed dashboard
+* Responsive design
+* User-friendly navigation
+* Professional CustomTkinter UI
 
 ---
 
@@ -12,93 +81,185 @@ It provides an intuitive dashboard alongside comprehensive **CRUD (Create, Read,
 
 ```text
 smart-traffic-system/
-├── config/
-│   └── db_connect.php       # Database connection file using PHP MySQLi
-├── css/
-│   └── style.css            # Premium, modern responsive dashboard stylesheet
+│
+├── main.py
+├── db.py
+│
 ├── db/
-│   └── database.sql         # SQL script containing schema and rich sample data
-├── includes/
-│   ├── header.php           # Shared dynamic navigation sidebar and global header
-│   └── footer.php           # Shared UI footer and interactive script blocks
-├── index.php                # Homepage Control Center Dashboard with analytics counters
-├── owners.php               # Owner CRUD operations (List grid and Register form)
-├── owner_edit.php           # Edit existing Owner parameters
-├── vehicles.php             # Vehicle CRUD operations (List grid and dropdown link form)
-├── vehicle_edit.php         # Edit Vehicle details
-├── officers.php             # Officer CRUD operations (List grid and Register form)
-├── officer_edit.php         # Edit Officer records
-├── violations.php           # Violation CRUD operations (List grid and record form)
-├── violation_edit.php       # Edit Violation details and status (Paid/Pending)
-├── challans.php             # Challan CRUD operations (List grid and ticket generator)
-└── challan_edit.php         # Edit Challan ticket parameters
+│   └── database.sql
+│
+└── README.md
 ```
 
 ---
 
-## 📊 Database Schema Relationships
-The relational database design maps real-world entities together with strict integrity constraints (`ON DELETE CASCADE`):
-1. **OWNER** represents registered vehicle drivers. Primary key `Owner_ID`.
-2. **VEHICLE** maps physical automobiles to owners. Primary key `Vehicle_No`. Foreign key `Owner_ID` references `OWNER(Owner_ID)`.
-3. **OFFICER** stores traffic patrol personnel. Primary key `Officer_ID`.
-4. **VIOLATION** registers traffic offenses. Primary key `Violation_ID`. Foreign key `Vehicle_No` references `VEHICLE(Vehicle_No)`.
-5. **CHALLAN** generates payment tickets. Primary key `Challan_ID`. Foreign key `Violation_ID` references `VIOLATION(Violation_ID)`. Foreign key `Officer_ID` references `OFFICER(Officer_ID)`.
+## 🗄️ Database Schema
+
+### OWNER
+
+Stores vehicle owner information.
+
+| Field      | Type        |
+| ---------- | ----------- |
+| Owner_ID   | Primary Key |
+| Name       | VARCHAR     |
+| License_No | VARCHAR     |
+
+### VEHICLE
+
+Stores vehicle details.
+
+| Field      | Type        |
+| ---------- | ----------- |
+| Vehicle_No | Primary Key |
+| Owner_ID   | Foreign Key |
+| Model      | VARCHAR     |
+
+### VIOLATION
+
+Stores traffic violation records.
+
+| Field        | Type        |
+| ------------ | ----------- |
+| Violation_ID | Primary Key |
+| Vehicle_No   | Foreign Key |
+| Type         | VARCHAR     |
+| Fine_Amount  | DECIMAL     |
+| Status       | VARCHAR     |
 
 ---
 
-## ⚡ Setup & Run Instructions
+## ⚙️ Installation
 
-Follow these step-by-step instructions to run this project on your local system:
+### Step 1: Clone Repository
 
-### Prerequisite: Install a PHP/MySQL Local Server Environment
-We recommend installing **XAMPP** (or WampServer, MAMP, Laragon) which bundles Apache, PHP, and MySQL together.
-* Download XAMPP: [https://www.apachefriends.org/index.html](https://www.apachefriends.org/index.html)
+```bash
+git clone https://github.com/yourusername/smart-traffic-system.git
+cd smart-traffic-system
+```
+
+### Step 2: Install Dependencies
+
+```bash
+pip install customtkinter
+pip install mysql-connector-python
+```
+
+Or
+
+```bash
+pip install -r requirements.txt
+```
+
+### Step 3: Start MySQL Server
+
+Ensure MySQL Server is running.
+
+Default configuration used:
+
+```python
+host='localhost'
+user='root'
+password='tiger'
+```
+
+Update `db.py` if your credentials are different.
+
+### Step 4: Create Database
+
+Run the SQL script:
+
+```sql
+database.sql
+```
+
+This will create:
+
+```sql
+traffic_violation_db
+```
+
+along with all required tables.
+
+### Step 5: Run Application
+
+```bash
+python main.py
+```
 
 ---
 
-### Step 1: Place Project Files in the Webroot
-1. Copy the entire `smart-traffic-system` project folder.
-2. Paste it into your XAMPP web server directory:
-   * **Windows**: `C:\xampp\htdocs\`
-   * **macOS**: `/Applications/XAMPP/htdocs/`
-   * **Linux**: `/opt/lampp/htdocs/`
+## 🏗️ System Architecture
 
-So your files reside at `C:\xampp\htdocs\smart-traffic-system\index.php`.
-
----
-
-### Step 2: Start Apache and MySQL Servers
-1. Open the **XAMPP Control Panel**.
-2. Click **Start** next to the **Apache** module (Web Server).
-3. Click **Start** next to the **MySQL** module (Database Server).
-   * Ensure both indicators turn green.
+```text
+CustomTkinter GUI
+        │
+        ▼
+Python Application
+        │
+        ▼
+ MySQL Connector
+        │
+        ▼
+  MySQL Database
+```
 
 ---
 
-### Step 3: Create the Database & Import SQL Schema
-1. Open your browser and navigate to: [http://localhost/phpmyadmin](http://localhost/phpmyadmin)
-2. Click on the **SQL** tab in the top navigation bar.
-3. Open `db/database.sql` from your project folder, copy its entire contents, and paste it into the phpMyAdmin SQL text area.
-4. Click **Go** in the bottom right corner.
-   * This automatically creates the `traffic_violation_db` database and all 5 tables with complete sample records!
+## 📸 Application Modules
+
+### Owners Dashboard
+
+* View all owners
+* Search by name or license number
+
+### Vehicles Dashboard
+
+* View all registered vehicles
+* Search vehicle information
+
+### Violations Dashboard
+
+* View traffic violations
+* Track fine payment status
+
+### Add Entry Module
+
+* Register owner
+* Register vehicle
+* Log traffic violation
+* Update existing records
 
 ---
 
-### Step 4: Run the Application!
-Open your web browser and navigate to the project URL:
-👉 **[http://localhost/smart-traffic-system/](http://localhost/smart-traffic-system/)**
+## 🔐 Database Features
 
-You will be greeted by the beautiful dark-slate Control Center Dashboard displaying active metrics and recent activities immediately!
+* Relational Database Design
+* Primary Keys
+* Foreign Keys
+* Data Integrity
+* Transaction Management
+* SQL Query Optimization
 
 ---
 
-## 🚀 Key Features for DBMS Viva/Assessments
-This project has been intentionally customized to show examiners advanced DBMS mastery:
-* **Referential Integrity Validation**: Try deleting an Owner. In the dashboard or listing, notice how all their registered vehicles, violations, and challan tickets are safely deleted automatically. This demonstrates working Cascading Foreign Keys.
-* **Complex JOIN Queries**: The dashboard (`index.php`), Violations page (`violations.php`), and Challans page (`challans.php`) combine multiple tables using `JOIN` operators to display synchronized driver name, vehicle plate, and officer name data.
-* **Form Inputs Validation**: HTML drop-down selectors and modern forms prevent inputting invalid values or orphaned foreign keys, protecting database consistency.
-* **SQL Injection Prevention**: Safe procedural variable escaping is written using `mysqli_real_escape_string` inside PHP handlers.
-* **Polished Micro-Interactions**: Features a gorgeous dark theme, custom responsive tables, sliding sidebar highlight animations, and self-fading notification blocks.
-=======
-# Smart_Traffic_System-DBMS-PROJECT-
->>>>>>> 8b4e0987184ea4ff27b7dc4dd1c4a7ed31f493f6
+## 🚀 Future Enhancements
+
+* Officer Management Module
+* Challan Generation
+* PDF Report Export
+* User Authentication
+* Camera-based Violation Detection
+* Cloud Database Integration
+* SMS & Email Notifications
+
+---
+
+## 👨‍💻 Developed By
+**Computer Science Engineering (CSE) Mini Project**
+Smart Traffic Violation Monitoring System using Python, CustomTkinter, and MySQL.
+
+---
+
+## 📜 License
+This project is developed for educational and academic purposes.
